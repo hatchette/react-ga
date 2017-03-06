@@ -124,6 +124,12 @@ ReactGA.set({ userId: 123 });
 ReactGA.pageview('/about/contact-us');
 ```
 
+Usage with optional title parameter
+```js
+ReactGA.pageview('/about/about', 'About me');
+```
+
+
 |Value|Notes|
 |------|-----|
 |path|`String`. e.g. '/get-involved/other-ways-to-help'|

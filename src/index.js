@@ -146,13 +146,14 @@ var ReactGA = {
     }
 
     if (typeof ga === 'function') {
-      var fieldsObject = { };
-
       if (title) {
-        fieldsObject.title = title;
+        var fieldsObject = {
+          title: title
+        };
+        ga('send', 'pageview', path, fieldsObject);
+      } else {
+        ga('send', 'pageview', path);
       }
-
-      ga('send', 'pageview', path, fieldsObject);
 
       if (_debug) {
         log('called ga(\'send\', \'pageview\', path);');

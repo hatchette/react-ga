@@ -286,10 +286,12 @@ var ReactGA = {
     }
 
     if (typeof ga === 'function') {
-      var fieldsObject = { };
+      var fieldsObject = null;
 
       if (title) {
-        fieldsObject.title = title;
+        fieldsObject = {
+          title: title
+        };
       }
 
       ga('send', 'pageview', path, fieldsObject);
