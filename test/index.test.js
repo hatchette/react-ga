@@ -219,6 +219,15 @@ describe('react-ga', function () {
       ]);
     });
 
+    it('should record a pageview with defined title', function () {
+      ReactGA.initialize('foo');
+      ReactGA.pageview('/valid', 'valid title');
+      getGaCalls().should.eql([
+        ['create', 'foo', 'auto'],
+        ['send', 'pageview', '/valid', { title: 'valid title' }]
+      ]);
+    });
+
     it('should abort, log warning if path is not provided', function () {
       ReactGA.initialize('foo');
       ReactGA.pageview();
