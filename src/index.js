@@ -131,8 +131,9 @@ var ReactGA = {
    * pageview:
    * Basic GA pageview tracking
    * @param  {String} path - the current page page e.g. '/about'
+   * @param  {String} title - the current page title e.g. 'About me'
    */
-  pageview: function (path) {
+  pageview: function (path, title) {
     if (!path) {
       warn('path is required in .pageview()');
       return;
@@ -145,7 +146,13 @@ var ReactGA = {
     }
 
     if (typeof ga === 'function') {
-      ga('send', 'pageview', path);
+      var fieldsObject = { };
+
+      if (title) {
+        fieldsObject.title = title;
+      }
+
+      ga('send', 'pageview', path, fieldsObject);
 
       if (_debug) {
         log('called ga(\'send\', \'pageview\', path);');
